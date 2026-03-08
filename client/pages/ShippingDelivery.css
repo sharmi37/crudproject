@@ -1,0 +1,31 @@
+.shipping-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  line-height: 1.7;
+  font-family: Arial, sans-serif;
+}
+
+.shipping-page h1 {
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+
+.shipping-page h2 {
+  font-size: 22px;
+  margin-top: 25px;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.intro {
+  font-size: 18px;
+  color: #555;
+}
+
+ul li {
+  margin: 6px 0;
+}
