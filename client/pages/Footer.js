@@ -16,7 +16,7 @@ function Footer() {
         </div>
 
         <p style={styles.copyright}>
-          © {new Date().getFullYear()} Saree Store. All rights reserved.
+          Saree Store. All rights reserved.
         </p>
       </div>
     </footer>
