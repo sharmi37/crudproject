@@ -4,62 +4,40 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const EditLogin = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/login/${id}`)
-      .then((res) => {
-        setEmail(res.data.email);
-        setPassword(res.data.password);
-      })
+      .get(`http://localhost:3000/users/${id}`)
+      .then((res) => setEmail(res.data.email))
       .catch((err) => console.log(err));
   }, [id]);
 
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
-    await axios.put(`http://localhost:3001/login/${id}`, {
+    await axios.put(`http://localhost:3000/users/${id}`, {
       email,
-      password,
     });
-    navigate("/loginconnect");
+
+    navigate("/dashboard");
   };
 
   return (
     <div className="container mt-5">
-      <div className="card p-4">
-        <h3>Edit Login</h3>
+      <h3>Edit User</h3>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+      <form onSubmit={handleUpdate}>
+        <input
+          type="email"
+          className="form-control mb-3"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="text"
-              className="form-control"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          <button className="btn btn-primary">Update</button>
-        </form>
-      </div>
+        <button className="btn btn-primary">Update</button>
+      </form>
     </div>
   );
 };
