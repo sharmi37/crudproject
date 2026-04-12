@@ -9,23 +9,24 @@ const Login = () => {
   const navigate = useNavigate();
 
   
-  const handleSubmit = async (e) => {
+
+const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const res = await axios.post("http://localhost:3001/login", {
+    const res = await axios.post("http://localhost:3000/login", {
       email,
       password,
     });
 
     alert(res.data.message);
 
-    localStorage.setItem("role", "admin");
+    localStorage.setItem("role", res.data.role);
 
-    navigate("/loginconnect"); // Admin details page
+    navigate("/dashboard");
 
   } catch (err) {
-    alert("Admin only login!");
+    alert("Login failed");
   }
 };
 
